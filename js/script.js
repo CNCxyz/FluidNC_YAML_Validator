@@ -2,7 +2,7 @@ $(document).ready(function() {
 	
 	var schema = null;
 	
-	$.getJSON("https://gist.githubusercontent.com/ajquick/d6d3b67b5b8aede986e500d3be40b5ee/raw/245c299196481e1fbcace29b0c1b0f8410143477/FluidNC_Schema.json", function(json) {
+	$.getJSON("https://github.com/CNCxyz/FluidNC_YAML_Validator/raw/main/FluidNC_Schema.json", function(json) {
 		var replaceSchema = JSON.stringify(json).split('\\\\').join('\\\\');
 		schema = JSON.parse(replaceSchema);
 	});
