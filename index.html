@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="This is a web based utility for configuring a Grbl_Esp32 installation using the Webserial API.">
+    <meta name="author" content="CNC.xyz">
+    <meta name="keywords" content="grbl,esp32,webserial">
+
+    <!-- Title Page-->
+    <title>FluidNC YAML Validator</title>
+    
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+</head>
+
+<body>
+
+    <div class="page-wrapper bg-dark p-t-45 p-b-50">
+        <div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-heading">
+                    <h2 class="title">FluidNC YAML Validator</h2> <i class="fas fa-check"></i>
+                </div>
+                
+                <form method="POST" id="form">
+                <div class="card-body">
+                    <div class="form-row form-row-top">
+                        <div class="name">YAML</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <textarea name="yaml" id="yaml" class="input--style-5" rows="15"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row form-row-top errors" id="error" style="display:none">
+                  		<div class="name">Error</div>
+                        <div class="input-group" id="error_text"></div>
+                   </div> 
+               </div>
+               <div class="card-footer" align="right">
+                    <span id="success" style="display: none;">Valid <i class="fas fa-check"></i></span><button class="btn btn--radius-2 btn--blue-2" type="submit" id="check" disabled="disabled">Check</i></button>
+                </div>
+               </form>
+            </div>
+       </div>
+   </div>    
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/js-yaml/js-yaml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/8.1.0/ajv7.min.js" integrity="sha512-iG/rBFw+Q1mlDQt15pw86zil1/1JeeNoJ1Grux8zZgvIBLDDnRLdA8UaIosHohzrqBEXA2+hIQV7DXnYGYGX/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Main JS-->
+    <script src="js/script.js"></script>
+
+</body>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
+<!-- end document-->

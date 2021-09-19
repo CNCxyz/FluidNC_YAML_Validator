@@ -1,0 +1,1666 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FluidNC YAML Validation Schema",
+  "type": "object",
+  "properties": {
+    "board": {
+      "title": "Board",
+      "type": "string",
+      "default": "",
+      "pattern": "^.*$"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string",
+      "default": "",
+      "pattern": "^.*$"
+    },
+    "stepping": {
+      "title": "Stepping",
+      "type": "object",
+      "properties": {
+        "engine": {
+          "title": "Engine",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "Timed",
+            "RMT",
+            "I2S_STREAM",
+            "I2S_STATIC"
+          ],
+          "pattern": "^.*$",
+          "enum": [
+            "Timed",
+            "RMT",
+            "I2S_STREAM",
+            "I2S_STATIC"
+          ]
+        },
+        "idle_ms": {
+          "title": "Idle_ms",
+          "type": "integer",
+          "maximum": 255,
+          "examples": [
+            255
+          ],
+          "default": 255
+        },
+        "pulse_us": {
+          "title": "Pulse_us",
+          "type": "integer",
+          "examples": [
+            2,
+            4
+          ],
+          "default": 2
+        },
+        "dir_delay_us": {
+          "title": "Dir_delay_us",
+          "type": "integer",
+          "examples": [
+            0,
+            1
+          ],
+          "default": 1
+        },
+        "disable_delay_us": {
+          "title": "Disable_delay_us",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        }
+      }
+    },
+    "axes": {
+      "title": "Axes",
+      "type": "object",
+      "properties": {
+        "shared_stepper_disable": {
+          "title": "Shared_stepper_disable",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      },
+      "patternProperties": {
+        "^[x-za-c]{1}$": {
+          "$ref": "#/$defs/axis"
+        }
+      }
+    },
+    "spi": {
+      "title": "Spi",
+      "type": "object",
+      "properties": {
+        "cs": {
+          "title": "Cs",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "miso": {
+          "title": "Miso",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "mosi": {
+          "title": "Mosi",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "sck": {
+          "title": "Sck",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      }
+    },
+    "i2so": {
+      "title": "I2SO",
+      "type": "object",
+      "properties": {
+        "bck": {
+          "title": "Bck",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "data": {
+          "title": "Data",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "ws": {
+          "title": "Ws",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      }
+    },
+    "control": {
+      "title": "Control",
+      "type": "object",
+      "properties": {
+        "safety_door": {
+          "title": "Safety_door",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "reset": {
+          "title": "Reset",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "feed_hold": {
+          "title": "Feed_hold",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "cycle_start": {
+          "title": "Cycle_start",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "macro0": {
+          "title": "Macro0",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "macro1": {
+          "title": "Macro1",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "macro2": {
+          "title": "Macro2",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "macro3": {
+          "title": "Macro3",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      }
+    },
+    "coolant": {
+      "title": "Coolant",
+      "type": "object",
+      "properties": {
+        "flood": {
+          "title": "Flood",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "mist": {
+          "title": "Mist",
+          "type": "string",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "delay_ms": {
+          "title": "Delay_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        }
+      }
+    },
+    "probe": {
+      "title": "Probe",
+      "type": "object",
+      "properties": {
+        "pin": {
+          "title": "Pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "check_mode_start": {
+          "title": "Check_mode_start",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        }
+      }
+    },
+    "comms": {
+      "title": "Comms",
+      "type": "object",
+      "properties": {
+        "telnet_enable": {
+          "title": "Telnet_enable",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        },
+        "telnet_port": {
+          "title": "Telnet_port",
+          "type": "integer",
+          "examples": [
+            23
+          ],
+          "default": 23
+        },
+        "http_enable": {
+          "title": "Http_enable",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        },
+        "http_port": {
+          "title": "Http_port",
+          "type": "integer",
+          "examples": [
+            80
+          ],
+          "default": 80
+        },
+        "hostname": {
+          "title": "Hostname",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "fluidnc"
+          ],
+          "pattern": "^.*$"
+        },
+        "wifi_ap": {
+          "title": "Wifi_ap",
+          "type": "object",
+          "properties": {
+            "ssid": {
+              "title": "Ssid",
+              "type": "string",
+              "default": "FluidNC",
+              "examples": [
+                "FluidNC"
+              ],
+              "pattern": "^.*$"
+            },
+            "ip_address": {
+              "title": "Ip_address",
+              "default": "10.0.0.1",
+              "$ref": "#/$defs/ipv4"
+            },
+            "gateway": {
+              "title": "Gateway",
+              "default": "10.0.0.1",
+              "$ref": "#/$defs/ipv4"
+            },
+            "netmask": {
+              "title": "Netmask",
+              "default": "255.255.0.0",
+              "$ref": "#/$defs/ipv4"
+            },
+            "dhcp": {
+              "title": "Dhcp",
+              "type": "boolean",
+              "examples": [
+                true
+              ],
+              "default": true
+            },
+            "channel": {
+              "title": "Channel",
+              "type": "integer",
+              "examples": [
+                1
+              ],
+              "default": 1
+            }
+          }
+        },
+        "wifi_sta": {
+          "title": "Wifi_sta",
+          "type": "object",
+          "properties": {
+            "ssid": {
+              "title": "Ssid",
+              "type": "string",
+              "default": "",
+              "examples": [
+                "My Wi-Fi Network"
+              ],
+              "pattern": "^.*$"
+            },
+            "ip_address": {
+              "title": "Ip_address",
+              "default": "10.0.0.1",
+              "$ref": "#/$defs/ipv4"
+            },
+            "gateway": {
+              "title": "Gateway",
+              "default": "10.0.0.1",
+              "$ref": "#/$defs/ipv4"
+            },
+            "netmask": {
+              "title": "Netmask",
+              "default": "255.255.0.0",
+              "$ref": "#/$defs/ipv4"
+            },
+            "dhcp": {
+              "title": "Dhcp",
+              "type": "boolean",
+              "examples": [
+                true
+              ],
+              "default": true
+            }
+          }
+        }
+      }
+    },
+    "macros": {
+      "title": "Macros",
+      "type": "object",
+      "properties": {
+        "n0": {
+          "title": "N0",
+          "type": "null",
+          "default": null
+        },
+        "n1": {
+          "title": "N1",
+          "type": "null",
+          "default": null
+        },
+        "macro0": {
+          "title": "Macro0",
+          "type": "null",
+          "default": null
+        },
+        "macro1": {
+          "title": "Macro1",
+          "type": "null",
+          "default": null
+        },
+        "macro2": {
+          "title": "Macro2",
+          "type": "null",
+          "default": null
+        },
+        "macro3": {
+          "title": "Macro3",
+          "type": "null",
+          "default": null
+        }
+      }
+    },
+    "user_outputs": {
+      "title": "User_outputs",
+      "type": "object",
+      "properties": {
+        "analog0": {
+          "title": "Analog0",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "analog1": {
+          "title": "Analog1",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "analog2": {
+          "title": "Analog2",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "analog3": {
+          "title": "Analog3",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "analog_frequency0": {
+          "title": "Analog_frequency0",
+          "type": "integer",
+          "examples": [
+            5000
+          ],
+          "default": 0
+        },
+        "analog_frequency1": {
+          "title": "Analog_frequency1",
+          "type": "integer",
+          "examples": [
+            5000
+          ],
+          "default": 0
+        },
+        "analog_frequency2": {
+          "title": "Analog_frequency2",
+          "type": "integer",
+          "examples": [
+            5000
+          ],
+          "default": 0
+        },
+        "analog_frequency3": {
+          "title": "Analog_frequency3",
+          "type": "integer",
+          "examples": [
+            5000
+          ],
+          "default": 0
+        },
+        "digital0": {
+          "title": "Digital0",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "digital1": {
+          "title": "Digital1",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "digital2": {
+          "title": "Digital2",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "digital3": {
+          "title": "Digital3",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      }
+    },
+    "sdcard": {
+      "title": "Sdcard",
+      "type": "object",
+      "properties": {
+        "card_detect": {
+          "title": "Card_detect",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      }
+    },
+    "software_debounce_ms": {
+      "title": "Software_debounce_ms",
+      "type": "integer",
+      "examples": [
+        0
+      ],
+      "default": 0
+    },
+    "laser_mode": {
+      "title": "Laser_mode",
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "default": false
+    },
+    "arc_tolerance": {
+      "title": "Arc_tolerance",
+      "type": "number",
+      "examples": [
+        0.002
+      ],
+      "default": 0
+    },
+    "junction_deviation": {
+      "title": "Junction_deviation",
+      "type": "number",
+      "examples": [
+        0.01
+      ],
+      "default": 0
+    },
+    "verbose_errors": {
+      "title": "Verbose_errors",
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "default": false
+    },
+    "report_inches": {
+      "title": "Report_inches",
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "default": false
+    },
+    "homing_init_lock": {
+      "title": "Homing_init_lock",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "enable_parking_override_control": {
+      "title": "Enable_parking_override_control",
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "default": false
+    },
+    "deactivate_parking_upon_init": {
+      "title": "Deactivate_parking_upon_init",
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "default": false
+    },
+    "check_limits_at_init": {
+      "title": "Check_limits_at_init",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "limits_two_switches_on_axis": {
+      "title": "Limits_two_switches_on_axis",
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "default": false
+    },
+    "disable_laser_during_hold": {
+      "title": "Disable_laser_during_hold",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "use_line_numbers": {
+      "title": "Use_line_numbers",
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "default": false
+    }
+  },
+  "patternProperties": {
+    "10V": {
+      "$ref": "#/$defs/10V"
+    },
+    "besc": {
+      "$ref": "#/$defs/besc"
+    },
+    "DAC": {
+      "$ref": "#/$defs/DAC"
+    },
+    "Huanyang": {
+      "$ref": "#/$defs/Huanyang"
+    },
+    "Laser": {
+      "$ref": "#/$defs/Laser"
+    },
+    "relay": {
+      "$ref": "#/$defs/relay"
+    },
+    "PWM": {
+      "$ref": "#/$defs/PWM"
+    },
+    "NoSpindle": {
+      "title": "Nospindle",
+      "type": "null",
+      "default": null
+    }
+  },
+  "$defs": {
+    "axis": {
+      "type": "object",
+      "properties": {
+        "steps_per_mm": {
+          "title": "Steps_per_mm",
+          "type": "number",
+          "examples": [
+            320
+          ],
+          "default": 0
+        },
+        "max_rate": {
+          "title": "Max_rate",
+          "type": "number",
+          "examples": [
+            1000
+          ],
+          "default": 0
+        },
+        "acceleration": {
+          "title": "Acceleration",
+          "type": "number",
+          "examples": [
+            25
+          ],
+          "default": 0
+        },
+        "max_travel": {
+          "title": "Max_travel",
+          "type": "number",
+          "examples": [
+            200
+          ],
+          "default": 0
+        },
+        "soft_limits": {
+          "title": "Soft_limits",
+          "type": "boolean",
+          "examples": [
+            true,
+            false
+          ],
+          "default": false
+        }
+      },
+      "patternProperties": {
+        "^motor[0-9]+$": {
+          "$ref": "#/$defs/motor"
+        }
+      }
+    },
+    "motor": {
+      "type": "object",
+      "properties": {
+        "limit_all": {
+          "title": "Limit_all",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "limit_pos": {
+          "title": "Limit_pos",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "limit_neg": {
+          "title": "Limit_neg",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "hard_limits": {
+          "title": "Hard_limits",
+          "type": "boolean",
+          "examples": [
+            true,
+            false
+          ],
+          "default": false
+        },
+        "pulloff": {
+          "title": "Pulloff",
+          "type": "number",
+          "examples": [
+            1
+          ],
+          "default": 0
+        }
+      },
+      "patternProperties": {
+        "^stepstick$": {
+          "$ref": "#/$defs/stepstick"
+        },
+        "^tmc_2130$": {
+          "$ref": "#/$defs/tmc_2130"
+        },
+        "^tmc_2209$": {
+          "$ref": "#/$defs/tmc_2209"
+        },
+        "^rc_servo$": {
+          "$ref": "#/$defs/rc_servo"
+        }
+      }
+    },
+    "pins": {
+      "type": "string",
+      "default": "NO_PIN",
+      "pattern": "^((gpio|i2so).([0-9]+)(:(low|high|pu|pd)){0,2}|NO_PIN)$"
+    },
+    "stepstick": {
+      "title": "Stepstick",
+      "type": "object",
+      "properties": {
+        "step": {
+          "title": "Step",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction": {
+          "title": "Direction",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable": {
+          "title": "Disable",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "ms1": {
+          "title": "MS1",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "ms2": {
+          "title": "MS2",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "ms3": {
+          "title": "MS3",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "reset": {
+          "title": "Reset",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      }
+    },
+    "tmc_2130": {
+      "title": "TMC_2130",
+      "type": "object",
+      "properties": {
+        "cs": {
+          "title": "Cs",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "spi_index": {
+          "title": "Spi_index",
+          "type": "integer",
+          "examples": [
+            -1
+          ],
+          "default": 0
+        },
+        "r_sense": {
+          "title": "R_sense",
+          "type": "number",
+          "examples": [
+            0.11
+          ],
+          "default": 0
+        },
+        "run_current": {
+          "title": "Run_current",
+          "type": "number",
+          "examples": [
+            0.25
+          ],
+          "default": 0
+        },
+        "hold_current": {
+          "title": "Hold_current",
+          "type": "number",
+          "examples": [
+            0.25
+          ],
+          "default": 0
+        },
+        "microsteps": {
+          "title": "Microsteps",
+          "type": "integer",
+          "examples": [
+            32
+          ],
+          "default": 0
+        },
+        "stallguard": {
+          "title": "Stallguard",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "stallguardDebugMode": {
+          "title": "Stallguarddebugmode",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "toff_disable": {
+          "title": "Toff_disable",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "toff_stealthchop": {
+          "title": "Toff_stealthchop",
+          "type": "integer",
+          "examples": [
+            5
+          ],
+          "default": 0
+        },
+        "toff_coolstep": {
+          "title": "Toff_coolstep",
+          "type": "integer",
+          "examples": [
+            3
+          ],
+          "default": 0
+        },
+        "run_mode": {
+          "title": "Run_mode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "StealthChop",
+            "CoolStep",
+            "StallGuard"
+          ],
+          "pattern": "^.*$"
+        },
+        "homing_mode": {
+          "title": "Homing_mode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "StealthChop",
+            "CoolStep",
+            "StallGuard"
+          ],
+          "pattern": "^.*$"
+        },
+        "use_enable": {
+          "title": "Use_enable",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "step": {
+          "title": "Step",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction": {
+          "title": "Direction",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable": {
+          "title": "Disable",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      }
+    },
+    "tmc_2209": {
+      "title": "TMC_2209",
+      "type": "object",
+      "properties": {
+        "uart": {
+          "title": "Uart",
+          "type": "object",
+          "properties": {
+            "txd_pin": {
+              "title": "Txd_pin",
+              "$ref": "#/$defs/pins",
+              "default": "NO_PIN"
+            },
+            "rxd_pin": {
+              "title": "Rxd_pin",
+              "$ref": "#/$defs/pins",
+              "default": "NO_PIN"
+            },
+            "rts_pin": {
+              "title": "Rts_pin",
+              "$ref": "#/$defs/pins",
+              "default": "NO_PIN"
+            },
+            "cts_pin": {
+              "title": "Cts_pin",
+              "$ref": "#/$defs/pins",
+              "default": "NO_PIN"
+            },
+            "baud": {
+              "title": "Baud",
+              "type": "integer",
+              "examples": [
+                115200
+              ],
+              "default": 115200
+            },
+            "mode": {
+              "title": "Mode",
+              "type": "string",
+              "default": "8N1",
+              "examples": [
+                "8N1"
+              ],
+              "pattern": "^.*$"
+            }
+          }
+        },
+        "r_sense": {
+          "title": "R_sense",
+          "type": "number",
+          "examples": [
+            0.11
+          ],
+          "default": 0
+        },
+        "run_current": {
+          "title": "Run_current",
+          "type": "number",
+          "examples": [
+            0.5
+          ],
+          "default": 0
+        },
+        "hold_current": {
+          "title": "Hold_current",
+          "type": "number",
+          "examples": [
+            0.5
+          ],
+          "default": 0
+        },
+        "microsteps": {
+          "title": "Microsteps",
+          "type": "integer",
+          "examples": [
+            16
+          ],
+          "default": 0
+        },
+        "stallguard": {
+          "title": "Stallguard",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "stallguardDebugMode": {
+          "title": "Stallguarddebugmode",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "toff_disable": {
+          "title": "Toff_disable",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "toff_stealthchop": {
+          "title": "Toff_stealthchop",
+          "type": "integer",
+          "examples": [
+            5
+          ],
+          "default": 0
+        },
+        "toff_coolstep": {
+          "title": "Toff_coolstep",
+          "type": "integer",
+          "examples": [
+            3
+          ],
+          "default": 0
+        },
+        "run_mode": {
+          "title": "Run_mode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "StealthChop"
+          ],
+          "pattern": "^.*$"
+        },
+        "homing_mode": {
+          "title": "Homing_mode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "StealthChop"
+          ],
+          "pattern": "^.*$"
+        },
+        "use_enable": {
+          "title": "Use_enable",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "step": {
+          "title": "Step",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction": {
+          "title": "Direction",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable": {
+          "title": "Disable",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      }
+    },
+    "rc_servo": {
+      "title": "RC Servo",
+      "type": "object",
+      "properties": {
+        "pwm_freq": {
+          "title": "Pwm_freq",
+          "type": "integer",
+          "examples": [
+            50
+          ],
+          "default": 0
+        },
+        "output_pin": {
+          "title": "Output_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "min_pulse_us": {
+          "title": "Min_pulse_us",
+          "type": "integer",
+          "examples": [
+            1000
+          ],
+          "default": 0
+        },
+        "max_pulse_us": {
+          "title": "Max_pulse_us",
+          "type": "integer",
+          "examples": [
+            2000
+          ],
+          "default": 0
+        }
+      }
+    },
+    "10V": {
+      "title": "10v",
+      "type": "object",
+      "properties": {
+        "forward": {
+          "title": "Forward",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "reverse": {
+          "title": "Reverse",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "pwm_freq": {
+          "title": "Pwm_freq",
+          "type": "integer",
+          "examples": [
+            5000
+          ],
+          "default": 0
+        },
+        "output_pin": {
+          "title": "Output_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "enable_pin": {
+          "title": "Enable_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction_pin": {
+          "title": "Direction_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable_with_zero_speed": {
+          "title": "Disable_with_zero_speed",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "zero_speed_with_disable": {
+          "title": "Zero_speed_with_disable",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        },
+        "spinup_ms": {
+          "title": "Spinup_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "spindown_ms": {
+          "title": "Spindown_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "tool": {
+          "title": "Tool",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "speeds": {
+          "title": "Speeds",
+          "$ref": "#/$defs/speeds"
+        }
+      }
+    },
+    "besc": {
+      "title": "Besc",
+      "type": "object",
+      "properties": {
+        "pwm_freq": {
+          "title": "Pwm_freq",
+          "type": "integer",
+          "examples": [
+            50
+          ],
+          "default": 0
+        },
+        "output_pin": {
+          "title": "Output_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "enable_pin": {
+          "title": "Enable_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction_pin": {
+          "title": "Direction_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable_with_zero_speed": {
+          "title": "Disable_with_zero_speed",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "zero_speed_with_disable": {
+          "title": "Zero_speed_with_disable",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        },
+        "spinup_ms": {
+          "title": "Spinup_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "spindown_ms": {
+          "title": "Spindown_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "tool": {
+          "title": "Tool",
+          "type": "integer",
+          "examples": [
+            100
+          ],
+          "default": 0
+        },
+        "speeds": {
+          "title": "Speeds",
+          "$ref": "#/$defs/speeds"
+        },
+        "min_pulse_us": {
+          "title": "Min_pulse_us",
+          "type": "integer",
+          "examples": [
+            900
+          ],
+          "default": 0
+        },
+        "max_pulse_us": {
+          "title": "Max_pulse_us",
+          "type": "integer",
+          "examples": [
+            2200
+          ],
+          "default": 0
+        }
+      }
+    },
+    "DAC": {
+      "title": "Dac",
+      "type": "object",
+      "properties": {
+        "output_pin": {
+          "title": "Output_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "enable_pin": {
+          "title": "Enable_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction_pin": {
+          "title": "Direction_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable_with_zero_speed": {
+          "title": "Disable_with_zero_speed",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "zero_speed_with_disable": {
+          "title": "Zero_speed_with_disable",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        },
+        "spinup_ms": {
+          "title": "Spinup_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "spindown_ms": {
+          "title": "Spindown_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "tool": {
+          "title": "Tool",
+          "type": "integer",
+          "examples": [
+            100
+          ],
+          "default": 0
+        },
+        "speeds": {
+          "title": "Speeds",
+          "$ref": "#/$defs/speeds"
+        }
+      }
+    },
+    "Huanyang": {
+      "title": "Huanyang",
+      "type": "object",
+      "properties": {
+        "uart": {
+          "title": "Uart",
+          "type": "object",
+          "properties": {
+            "txd_pin": {
+              "title": "Txd_pin",
+              "$ref": "#/$defs/pins",
+              "default": "NO_PIN"
+            },
+            "rxd_pin": {
+              "title": "Rxd_pin",
+              "$ref": "#/$defs/pins",
+              "default": "NO_PIN"
+            },
+            "rts_pin": {
+              "title": "Rts_pin",
+              "$ref": "#/$defs/pins",
+              "default": "NO_PIN"
+            },
+            "baud": {
+              "title": "Baud",
+              "type": "integer",
+              "examples": [
+                9600
+              ],
+              "default": 0
+            },
+            "mode": {
+              "title": "Mode",
+              "type": "string",
+              "default": "",
+              "examples": [
+                "8N1"
+              ],
+              "pattern": "^.*$"
+            }
+          }
+        },
+        "spinup_delay_ms": {
+          "title": "Spinup_delay_ms",
+          "type": "integer",
+          "examples": [
+            10
+          ],
+          "default": 0
+        },
+        "spindown_delay_ms": {
+          "title": "Spindown_delay_ms",
+          "type": "integer",
+          "examples": [
+            10
+          ],
+          "default": 0
+        },
+        "modbus_id": {
+          "title": "Modbus_id",
+          "type": "integer",
+          "examples": [
+            1
+          ],
+          "default": 0
+        },
+        "spinup_ms": {
+          "title": "Spinup_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "spindown_ms": {
+          "title": "Spindown_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "tool": {
+          "title": "Tool",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "speeds": {
+          "title": "Speeds",
+          "$ref": "#/$defs/speeds"
+        }
+      }
+    },
+    "Laser": {
+      "title": "Laser",
+      "type": "object",
+      "properties": {
+        "pwm_freq": {
+          "title": "Pwm_freq",
+          "type": "integer",
+          "examples": [
+            5000
+          ],
+          "default": 0
+        },
+        "output_pin": {
+          "title": "Output_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "enable_pin": {
+          "title": "Enable_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction_pin": {
+          "title": "Direction_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable_with_zero_speed": {
+          "title": "Disable_with_zero_speed",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "zero_speed_with_disable": {
+          "title": "Zero_speed_with_disable",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        },
+        "spinup_ms": {
+          "title": "Spinup_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "spindown_ms": {
+          "title": "Spindown_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "tool": {
+          "title": "Tool",
+          "type": "integer",
+          "examples": [
+            100
+          ],
+          "default": 0
+        },
+        "speeds": {
+          "title": "Speeds",
+          "$ref": "#/$defs/speeds"
+        }
+      }
+    },
+    "relay": {
+      "title": "Relay",
+      "type": "object",
+      "properties": {
+        "output_pin": {
+          "title": "Output_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "enable_pin": {
+          "title": "Enable_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction_pin": {
+          "title": "Direction_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable_with_zero_speed": {
+          "title": "Disable_with_zero_speed",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "zero_speed_with_disable": {
+          "title": "Zero_speed_with_disable",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        },
+        "spinup_ms": {
+          "title": "Spinup_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "spindown_ms": {
+          "title": "Spindown_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "tool": {
+          "title": "Tool",
+          "type": "integer",
+          "examples": [
+            100
+          ],
+          "default": 0
+        },
+        "speeds": {
+          "title": "Speeds",
+          "$ref": "#/$defs/speeds"
+        }
+      }
+    },
+    "PWM": {
+      "title": "Pwm",
+      "type": "object",
+      "properties": {
+        "pwm_freq": {
+          "title": "Pwm_freq",
+          "type": "integer",
+          "examples": [
+            5000
+          ],
+          "default": 0
+        },
+        "output_pin": {
+          "title": "Output_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "enable_pin": {
+          "title": "Enable_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction_pin": {
+          "title": "Direction_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable_with_zero_speed": {
+          "title": "Disable_with_zero_speed",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "zero_speed_with_disable": {
+          "title": "Zero_speed_with_disable",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        },
+        "spinup_ms": {
+          "title": "Spinup_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "spindown_ms": {
+          "title": "Spindown_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "tool": {
+          "title": "Tool",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "speeds": {
+          "title": "Speeds",
+          "$ref": "#/$defs/speeds"
+        }
+      }
+    },
+    "speeds": {
+      "type": "string",
+      "default": "",
+      "examples": [
+        "0=0.000% 0=20.000% 4000=20.000% 20000=100.000%",
+        "0=0.000% 1000=0.000% 24000=100.000%",
+        "0=0.000% 255=100.000%",
+        "0=0% 10000=100%"
+      ],
+      "pattern": "^(([0-9]+)=(\\d+)(?:[.,]\\d{0,3})?%\\s?){2,}$"
+    },
+    "ipv4": {
+      "type": "string",
+      "examples": [
+        "10.0.0.1",
+        "255.255.0.0"
+      ],
+      "pattern": "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(.(?!$)|$)){4}$"
+    }
+  }
+}
