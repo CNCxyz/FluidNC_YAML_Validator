@@ -2,7 +2,7 @@ $(document).ready(function() {
 	
 	var schema = null;
 	
-	$.getJSON("https://github.com/CNCxyz/FluidNC_YAML_Validator/raw/main/FluidNC_Schema.json", function(json) {
+	$.getJSON("FluidNC_Schema.json", function(json) {
 		var replaceSchema = JSON.stringify(json).split('\\\\').join('\\\\');
 		schema = JSON.parse(replaceSchema);
 	});
