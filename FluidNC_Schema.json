@@ -588,41 +588,6 @@
       ],
       "default": false
     },
-    "rc_servo": {
-      "title": "RC Servo",
-      "type": "object",
-      "properties": {
-        "pwm_freq": {
-          "title": "Pwm_freq",
-          "type": "integer",
-          "examples": [
-            50
-          ],
-          "default": 0
-        },
-        "output_pin": {
-          "title": "Output_pin",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "min_pulse_us": {
-          "title": "Min_pulse_us",
-          "type": "integer",
-          "examples": [
-            1000
-          ],
-          "default": 0
-        },
-        "max_pulse_us": {
-          "title": "Max_pulse_us",
-          "type": "integer",
-          "examples": [
-            2000
-          ],
-          "default": 0
-        }
-      }
-    },
     "10V": {
       "title": "10v",
       "type": "object",
@@ -1273,6 +1238,41 @@
         },
         "^rc_servo$": {
           "$ref": "#/$defs/rc_servo"
+        }
+      }
+    },
+    "rc_servo": {
+      "title": "RC Servo",
+      "type": "object",
+      "properties": {
+        "pwm_freq": {
+          "title": "Pwm_freq",
+          "type": "integer",
+          "examples": [
+            50
+          ],
+          "default": 0
+        },
+        "output_pin": {
+          "title": "Output_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "min_pulse_us": {
+          "title": "Min_pulse_us",
+          "type": "integer",
+          "examples": [
+            1000
+          ],
+          "default": 0
+        },
+        "max_pulse_us": {
+          "title": "Max_pulse_us",
+          "type": "integer",
+          "examples": [
+            2000
+          ],
+          "default": 0
         }
       }
     },
