@@ -39,7 +39,10 @@ function isValid(schema, data) {
 	}
 
 	if (yamlerror == null) {
-
+			
+		console.log(schema);
+		console.log(data);
+			
 		const valid = ajv.validate(schema, data);
 	
 		if (ajv.errors) {
