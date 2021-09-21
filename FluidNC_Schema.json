@@ -587,482 +587,6 @@
         false
       ],
       "default": false
-    }
-  },
-  "patternProperties": {
-    "10V": {
-      "$ref": "#/$defs/10V"
-    },
-    "besc": {
-      "$ref": "#/$defs/besc"
-    },
-    "DAC": {
-      "$ref": "#/$defs/DAC"
-    },
-    "Huanyang": {
-      "$ref": "#/$defs/Huanyang"
-    },
-    "Laser": {
-      "$ref": "#/$defs/Laser"
-    },
-    "relay": {
-      "$ref": "#/$defs/relay"
-    },
-    "PWM": {
-      "$ref": "#/$defs/PWM"
-    },
-    "NoSpindle": {
-      "title": "Nospindle",
-      "type": "null",
-      "default": null
-    }
-  },
-  "$defs": {
-    "axis": {
-      "type": "object",
-      "properties": {
-        "steps_per_mm": {
-          "title": "Steps_per_mm",
-          "type": "number",
-          "examples": [
-            320
-          ],
-          "default": 0
-        },
-        "max_rate": {
-          "title": "Max_rate",
-          "type": "number",
-          "examples": [
-            1000
-          ],
-          "default": 0
-        },
-        "acceleration": {
-          "title": "Acceleration",
-          "type": "number",
-          "examples": [
-            25
-          ],
-          "default": 0
-        },
-        "max_travel": {
-          "title": "Max_travel",
-          "type": "number",
-          "examples": [
-            200
-          ],
-          "default": 0
-        },
-        "soft_limits": {
-          "title": "Soft_limits",
-          "type": "boolean",
-          "examples": [
-            true,
-            false
-          ],
-          "default": false
-        }
-      },
-      "patternProperties": {
-        "^motor[0-9]+$": {
-          "$ref": "#/$defs/motor"
-        }
-      }
-    },
-    "motor": {
-      "type": "object",
-      "properties": {
-        "limit_all": {
-          "title": "Limit_all",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "limit_pos": {
-          "title": "Limit_pos",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "limit_neg": {
-          "title": "Limit_neg",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "hard_limits": {
-          "title": "Hard_limits",
-          "type": "boolean",
-          "examples": [
-            true,
-            false
-          ],
-          "default": false
-        },
-        "pulloff": {
-          "title": "Pulloff",
-          "type": "number",
-          "examples": [
-            1
-          ],
-          "default": 0
-        }
-      },
-      "patternProperties": {
-        "^stepstick$": {
-          "$ref": "#/$defs/stepstick"
-        },
-        "^tmc_2130$": {
-          "$ref": "#/$defs/tmc_2130"
-        },
-        "^tmc_2209$": {
-          "$ref": "#/$defs/tmc_2209"
-        },
-        "^rc_servo$": {
-          "$ref": "#/$defs/rc_servo"
-        }
-      }
-    },
-    "pins": {
-      "type": "string",
-      "default": "NO_PIN",
-      "pattern": "^((gpio|i2so).([0-9]+)(:(low|high|pu|pd)){0,2}|NO_PIN)$"
-    },
-    "stepstick": {
-      "title": "Stepstick",
-      "type": "object",
-      "properties": {
-        "step": {
-          "title": "Step",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "direction": {
-          "title": "Direction",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "disable": {
-          "title": "Disable",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "ms1": {
-          "title": "MS1",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "ms2": {
-          "title": "MS2",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "ms3": {
-          "title": "MS3",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "reset": {
-          "title": "Reset",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        }
-      }
-    },
-    "tmc_2130": {
-      "title": "TMC_2130",
-      "type": "object",
-      "properties": {
-        "cs": {
-          "title": "Cs",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "spi_index": {
-          "title": "Spi_index",
-          "type": "integer",
-          "examples": [
-            -1
-          ],
-          "default": 0
-        },
-        "r_sense": {
-          "title": "R_sense",
-          "type": "number",
-          "examples": [
-            0.11
-          ],
-          "default": 0
-        },
-        "run_current": {
-          "title": "Run_current",
-          "type": "number",
-          "examples": [
-            0.25
-          ],
-          "default": 0
-        },
-        "hold_current": {
-          "title": "Hold_current",
-          "type": "number",
-          "examples": [
-            0.25
-          ],
-          "default": 0
-        },
-        "microsteps": {
-          "title": "Microsteps",
-          "type": "integer",
-          "examples": [
-            32
-          ],
-          "default": 0
-        },
-        "stallguard": {
-          "title": "Stallguard",
-          "type": "integer",
-          "examples": [
-            0
-          ],
-          "default": 0
-        },
-        "stallguardDebugMode": {
-          "title": "Stallguarddebugmode",
-          "type": "boolean",
-          "examples": [
-            false
-          ],
-          "default": false
-        },
-        "toff_disable": {
-          "title": "Toff_disable",
-          "type": "integer",
-          "examples": [
-            0
-          ],
-          "default": 0
-        },
-        "toff_stealthchop": {
-          "title": "Toff_stealthchop",
-          "type": "integer",
-          "examples": [
-            5
-          ],
-          "default": 0
-        },
-        "toff_coolstep": {
-          "title": "Toff_coolstep",
-          "type": "integer",
-          "examples": [
-            3
-          ],
-          "default": 0
-        },
-        "run_mode": {
-          "title": "Run_mode",
-          "type": "string",
-          "default": "",
-          "examples": [
-            "StealthChop",
-            "CoolStep",
-            "StallGuard"
-          ],
-          "pattern": "^.*$"
-        },
-        "homing_mode": {
-          "title": "Homing_mode",
-          "type": "string",
-          "default": "",
-          "examples": [
-            "StealthChop",
-            "CoolStep",
-            "StallGuard"
-          ],
-          "pattern": "^.*$"
-        },
-        "use_enable": {
-          "title": "Use_enable",
-          "type": "boolean",
-          "examples": [
-            false
-          ],
-          "default": false
-        },
-        "step": {
-          "title": "Step",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "direction": {
-          "title": "Direction",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "disable": {
-          "title": "Disable",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        }
-      }
-    },
-    "tmc_2209": {
-      "title": "TMC_2209",
-      "type": "object",
-      "properties": {
-        "uart": {
-          "title": "Uart",
-          "type": "object",
-          "properties": {
-            "txd_pin": {
-              "title": "Txd_pin",
-              "$ref": "#/$defs/pins",
-              "default": "NO_PIN"
-            },
-            "rxd_pin": {
-              "title": "Rxd_pin",
-              "$ref": "#/$defs/pins",
-              "default": "NO_PIN"
-            },
-            "rts_pin": {
-              "title": "Rts_pin",
-              "$ref": "#/$defs/pins",
-              "default": "NO_PIN"
-            },
-            "cts_pin": {
-              "title": "Cts_pin",
-              "$ref": "#/$defs/pins",
-              "default": "NO_PIN"
-            },
-            "baud": {
-              "title": "Baud",
-              "type": "integer",
-              "examples": [
-                115200
-              ],
-              "default": 115200
-            },
-            "mode": {
-              "title": "Mode",
-              "type": "string",
-              "default": "8N1",
-              "examples": [
-                "8N1"
-              ],
-              "pattern": "^.*$"
-            }
-          }
-        },
-        "r_sense": {
-          "title": "R_sense",
-          "type": "number",
-          "examples": [
-            0.11
-          ],
-          "default": 0
-        },
-        "run_current": {
-          "title": "Run_current",
-          "type": "number",
-          "examples": [
-            0.5
-          ],
-          "default": 0
-        },
-        "hold_current": {
-          "title": "Hold_current",
-          "type": "number",
-          "examples": [
-            0.5
-          ],
-          "default": 0
-        },
-        "microsteps": {
-          "title": "Microsteps",
-          "type": "integer",
-          "examples": [
-            16
-          ],
-          "default": 0
-        },
-        "stallguard": {
-          "title": "Stallguard",
-          "type": "integer",
-          "examples": [
-            0
-          ],
-          "default": 0
-        },
-        "stallguardDebugMode": {
-          "title": "Stallguarddebugmode",
-          "type": "boolean",
-          "examples": [
-            false
-          ],
-          "default": false
-        },
-        "toff_disable": {
-          "title": "Toff_disable",
-          "type": "integer",
-          "examples": [
-            0
-          ],
-          "default": 0
-        },
-        "toff_stealthchop": {
-          "title": "Toff_stealthchop",
-          "type": "integer",
-          "examples": [
-            5
-          ],
-          "default": 0
-        },
-        "toff_coolstep": {
-          "title": "Toff_coolstep",
-          "type": "integer",
-          "examples": [
-            3
-          ],
-          "default": 0
-        },
-        "run_mode": {
-          "title": "Run_mode",
-          "type": "string",
-          "default": "",
-          "examples": [
-            "StealthChop"
-          ],
-          "pattern": "^.*$"
-        },
-        "homing_mode": {
-          "title": "Homing_mode",
-          "type": "string",
-          "default": "",
-          "examples": [
-            "StealthChop"
-          ],
-          "pattern": "^.*$"
-        },
-        "use_enable": {
-          "title": "Use_enable",
-          "type": "boolean",
-          "examples": [
-            false
-          ],
-          "default": false
-        },
-        "step": {
-          "title": "Step",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "direction": {
-          "title": "Direction",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        },
-        "disable": {
-          "title": "Disable",
-          "$ref": "#/$defs/pins",
-          "default": "NO_PIN"
-        }
-      }
     },
     "rc_servo": {
       "title": "RC Servo",
@@ -1640,6 +1164,463 @@
         "speeds": {
           "title": "Speeds",
           "$ref": "#/$defs/speeds"
+        }
+      }
+    },
+    "NoSpindle": {
+      "title": "Nospindle",
+      "type": "null",
+      "default": null
+    }
+  },
+  "$defs": {
+    "axis": {
+      "type": "object",
+      "properties": {
+        "steps_per_mm": {
+          "title": "Steps_per_mm",
+          "type": "number",
+          "examples": [
+            320
+          ],
+          "default": 0
+        },
+        "max_rate": {
+          "title": "Max_rate",
+          "type": "number",
+          "examples": [
+            1000
+          ],
+          "default": 0
+        },
+        "acceleration": {
+          "title": "Acceleration",
+          "type": "number",
+          "examples": [
+            25
+          ],
+          "default": 0
+        },
+        "max_travel": {
+          "title": "Max_travel",
+          "type": "number",
+          "examples": [
+            200
+          ],
+          "default": 0
+        },
+        "soft_limits": {
+          "title": "Soft_limits",
+          "type": "boolean",
+          "examples": [
+            true,
+            false
+          ],
+          "default": false
+        }
+      },
+      "patternProperties": {
+        "^motor[0-9]+$": {
+          "$ref": "#/$defs/motor"
+        }
+      }
+    },
+    "motor": {
+      "type": "object",
+      "properties": {
+        "limit_all": {
+          "title": "Limit_all",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "limit_pos": {
+          "title": "Limit_pos",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "limit_neg": {
+          "title": "Limit_neg",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "hard_limits": {
+          "title": "Hard_limits",
+          "type": "boolean",
+          "examples": [
+            true,
+            false
+          ],
+          "default": false
+        },
+        "pulloff": {
+          "title": "Pulloff",
+          "type": "number",
+          "examples": [
+            1
+          ],
+          "default": 0
+        }
+      },
+      "patternProperties": {
+        "^stepstick$": {
+          "$ref": "#/$defs/stepstick"
+        },
+        "^tmc_2130$": {
+          "$ref": "#/$defs/tmc_2130"
+        },
+        "^tmc_2209$": {
+          "$ref": "#/$defs/tmc_2209"
+        },
+        "^rc_servo$": {
+          "$ref": "#/$defs/rc_servo"
+        }
+      }
+    },
+    "pins": {
+      "type": "string",
+      "default": "NO_PIN",
+      "pattern": "^((gpio|i2so).([0-9]+)(:(low|high|pu|pd)){0,2}|NO_PIN)$"
+    },
+    "stepstick": {
+      "title": "Stepstick",
+      "type": "object",
+      "properties": {
+        "step": {
+          "title": "Step",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction": {
+          "title": "Direction",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable": {
+          "title": "Disable",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "ms1": {
+          "title": "MS1",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "ms2": {
+          "title": "MS2",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "ms3": {
+          "title": "MS3",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "reset": {
+          "title": "Reset",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      },
+      "required": [
+        "step",
+        "direction"
+      ]
+    },
+    "tmc_2130": {
+      "title": "TMC_2130",
+      "type": "object",
+      "properties": {
+        "cs": {
+          "title": "Cs",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "spi_index": {
+          "title": "Spi_index",
+          "type": "integer",
+          "examples": [
+            -1
+          ],
+          "default": 0
+        },
+        "r_sense": {
+          "title": "R_sense",
+          "type": "number",
+          "examples": [
+            0.11
+          ],
+          "default": 0
+        },
+        "run_current": {
+          "title": "Run_current",
+          "type": "number",
+          "examples": [
+            0.25
+          ],
+          "default": 0
+        },
+        "hold_current": {
+          "title": "Hold_current",
+          "type": "number",
+          "examples": [
+            0.25
+          ],
+          "default": 0
+        },
+        "microsteps": {
+          "title": "Microsteps",
+          "type": "integer",
+          "examples": [
+            32
+          ],
+          "default": 0
+        },
+        "stallguard": {
+          "title": "Stallguard",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "stallguardDebugMode": {
+          "title": "Stallguarddebugmode",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "toff_disable": {
+          "title": "Toff_disable",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "toff_stealthchop": {
+          "title": "Toff_stealthchop",
+          "type": "integer",
+          "examples": [
+            5
+          ],
+          "default": 0
+        },
+        "toff_coolstep": {
+          "title": "Toff_coolstep",
+          "type": "integer",
+          "examples": [
+            3
+          ],
+          "default": 0
+        },
+        "run_mode": {
+          "title": "Run_mode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "StealthChop",
+            "CoolStep",
+            "StallGuard"
+          ],
+          "pattern": "^.*$"
+        },
+        "homing_mode": {
+          "title": "Homing_mode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "StealthChop",
+            "CoolStep",
+            "StallGuard"
+          ],
+          "pattern": "^.*$"
+        },
+        "use_enable": {
+          "title": "Use_enable",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "step": {
+          "title": "Step",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction": {
+          "title": "Direction",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable": {
+          "title": "Disable",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      }
+    },
+    "tmc_2209": {
+      "title": "TMC_2209",
+      "type": "object",
+      "properties": {
+        "uart": {
+          "title": "Uart",
+          "type": "object",
+          "properties": {
+            "txd_pin": {
+              "title": "Txd_pin",
+              "$ref": "#/$defs/pins",
+              "default": "NO_PIN"
+            },
+            "rxd_pin": {
+              "title": "Rxd_pin",
+              "$ref": "#/$defs/pins",
+              "default": "NO_PIN"
+            },
+            "rts_pin": {
+              "title": "Rts_pin",
+              "$ref": "#/$defs/pins",
+              "default": "NO_PIN"
+            },
+            "cts_pin": {
+              "title": "Cts_pin",
+              "$ref": "#/$defs/pins",
+              "default": "NO_PIN"
+            },
+            "baud": {
+              "title": "Baud",
+              "type": "integer",
+              "examples": [
+                115200
+              ],
+              "default": 115200
+            },
+            "mode": {
+              "title": "Mode",
+              "type": "string",
+              "default": "8N1",
+              "examples": [
+                "8N1"
+              ],
+              "pattern": "^.*$"
+            }
+          }
+        },
+        "r_sense": {
+          "title": "R_sense",
+          "type": "number",
+          "examples": [
+            0.11
+          ],
+          "default": 0
+        },
+        "run_current": {
+          "title": "Run_current",
+          "type": "number",
+          "examples": [
+            0.5
+          ],
+          "default": 0
+        },
+        "hold_current": {
+          "title": "Hold_current",
+          "type": "number",
+          "examples": [
+            0.5
+          ],
+          "default": 0
+        },
+        "microsteps": {
+          "title": "Microsteps",
+          "type": "integer",
+          "examples": [
+            16
+          ],
+          "default": 0
+        },
+        "stallguard": {
+          "title": "Stallguard",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "stallguardDebugMode": {
+          "title": "Stallguarddebugmode",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "toff_disable": {
+          "title": "Toff_disable",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "toff_stealthchop": {
+          "title": "Toff_stealthchop",
+          "type": "integer",
+          "examples": [
+            5
+          ],
+          "default": 0
+        },
+        "toff_coolstep": {
+          "title": "Toff_coolstep",
+          "type": "integer",
+          "examples": [
+            3
+          ],
+          "default": 0
+        },
+        "run_mode": {
+          "title": "Run_mode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "StealthChop"
+          ],
+          "pattern": "^.*$"
+        },
+        "homing_mode": {
+          "title": "Homing_mode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "StealthChop"
+          ],
+          "pattern": "^.*$"
+        },
+        "use_enable": {
+          "title": "Use_enable",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "step": {
+          "title": "Step",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction": {
+          "title": "Direction",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable": {
+          "title": "Disable",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
         }
       }
     },
