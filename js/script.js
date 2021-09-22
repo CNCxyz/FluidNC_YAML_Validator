@@ -26,7 +26,7 @@ function isValid(schema, data) {
 		
 	const resolvePath = (object, path, defaultValue) => path.split(/[\.\[\]\'\"]/).filter(p => p).reduce((o, p) => o ? o[p] : defaultValue, object);
 		
-	const ajv = new ajv7.default({allErrors: true, strict: true});
+	const ajv = new ajv7.default({allErrors: true, strict: true, coerceTypes: true});
 
 	var yamlerror = null;
 
