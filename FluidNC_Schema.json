@@ -1697,75 +1697,79 @@
       }
     },
     "homing": {
-      "cycle": {
-        "title": "Cycle (int)",
-        "type": "integer",
-        "examples": [
-          -1,
-          0,
-          1,
-          2,
-          3
-        ],
-        "default":-1
-      },
-      "positive_direction": {
-        "title": "Positive direction (boolean)",
-        "type": "boolean",
-        "examples": [
-          true,
-          false
-        ],
-        "default": true
-      },
-      "mpos_mm": {
-        "title": "Switch location delta (mm)",
-        "type": "number",
-        "examples": [
-          0.0,
-          0.5
-        ],
-        "default": 0
-      },
-      "feed_mm_per_min": {
-        "title": "Feed rate (mm/min)",
-        "type": "number",
-        "examples": [
-          50
-        ],
-        "default": 50
-      },
-      "seek_mm_per_min": {
-        "title": "Seek rate (mm/min)",
-        "type": "number",
-        "examples": [
-          200.0
-        ],
-        "default": 200.0
-      },
-      "settle_ms": {
-        "title": "Settle time (ms)",
-        "type": "integer",
-        "examples": [
-          250
-        ],
-        "default": 250
-      },
-      "seek_scaler": {
-        "title": "Seek scaler",
-        "type": "number",
-        "examples": [
-          1.1
-        ],
-        "default": 1.1
-      },
-      "feed_scaler": {
-        "title": "Feed scaler",
-        "type": "number",
-        "examples": [
-          1.1
-        ],
-        "default": 1.1
+      "title": "Homing",
+      "type": "object",
+      "properties": {
+        "cycle": {
+          "title": "Cycle (int)",
+          "type": "integer",
+          "examples": [
+            -1,
+            0,
+            1,
+            2,
+            3
+          ],
+          "default":-1
+        },
+        "positive_direction": {
+          "title": "Positive direction (boolean)",
+          "type": "boolean",
+          "examples": [
+            true,
+            false
+          ],
+          "default": true
+        },
+        "mpos_mm": {
+          "title": "Switch location delta (mm)",
+          "type": "number",
+          "examples": [
+            0.0,
+            0.5
+          ],
+          "default": 0
+        },
+        "feed_mm_per_min": {
+          "title": "Feed rate (mm/min)",
+          "type": "number",
+          "examples": [
+            50
+          ],
+          "default": 50
+        },
+        "seek_mm_per_min": {
+          "title": "Seek rate (mm/min)",
+          "type": "number",
+          "examples": [
+            200.0
+          ],
+          "default": 200.0
+        },
+        "settle_ms": {
+          "title": "Settle time (ms)",
+          "type": "integer",
+          "examples": [
+            250
+          ],
+          "default": 250
+        },
+        "seek_scaler": {
+          "title": "Seek scaler",
+          "type": "number",
+          "examples": [
+            1.1
+          ],
+          "default": 1.1
+        },
+        "feed_scaler": {
+          "title": "Feed scaler",
+          "type": "number",
+          "examples": [
+            1.1
+          ],
+          "default": 1.1
+        }
       }
     },
     "speed_map": {
