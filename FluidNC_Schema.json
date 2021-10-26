@@ -1367,40 +1367,43 @@
       ]
     },
     "unipolar": {
-      "phase0_pin": {
-        "title": "Phase 0 pin",
-        "$ref": "#/$defs/pins",
-        "default": "NO_PIN"
-      },
-      "phase1_pin": {
-        "title": "Phase 1 pin",
-        "$ref": "#/$defs/pins",
-        "default": "NO_PIN"
-      },
-      "phase2_pin": {
-        "title": "Phase 2 pin",
-        "$ref": "#/$defs/pins",
-        "default": "NO_PIN"
-      },
-      "phase3_pin": {
-        "title": "Phase 3 pin",
-        "$ref": "#/$defs/pins",
-        "default": "NO_PIN"
-      },
-      "half_step": {
-        "title": "Half step (boolean)",
-        "type": "boolean",
-        "examples": [
-          true,
-          false
-        ],
-        "default": true
-      }
+      "title": "Unipolar",
+      "type": "object",
+      "properties": {
+        "phase0_pin": {
+          "title": "Phase 0 pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "phase1_pin": {
+          "title": "Phase 1 pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "phase2_pin": {
+          "title": "Phase 2 pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "phase3_pin": {
+          "title": "Phase 3 pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "half_step": {
+          "title": "Half step (boolean)",
+          "type": "boolean",
+          "examples": [
+            true,
+            false
+          ],
+          "default": true
+        }
+	  }
     },
     "tmc_2130": {
       "title": "TMC_2130",
       "type": "object",
-
       "properties": {
         "cs_pin": {
           "title": "Chip select pin",
