@@ -1362,8 +1362,8 @@
         }
       },
       "required": [
-        "step",
-        "direction"
+        "step_pin",
+        "direction_pin"
       ]
     },
     "unipolar": {
@@ -1517,18 +1517,18 @@
           ],
           "default": false
         },
-        "step": {
-          "title": "Step",
+        "step_pin": {
+          "title": "Step pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "direction": {
-          "title": "Direction",
+        "direction_pin": {
+          "title": "Direction pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "disable": {
-          "title": "Disable",
+        "disable_pin": {
+          "title": "Disable pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         }
@@ -1679,18 +1679,18 @@
           ],
           "default": false
         },
-        "step": {
-          "title": "Step",
+        "step_pin": {
+          "title": "Step pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "direction": {
-          "title": "Direction",
+        "direction_pin": {
+          "title": "Direction pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "disable": {
-          "title": "Disable",
+        "disable_pin": {
+          "title": "Disable pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         }
