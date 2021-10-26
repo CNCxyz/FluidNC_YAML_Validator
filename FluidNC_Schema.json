@@ -1267,6 +1267,9 @@
         "^stepstick$": {
           "$ref": "#/$defs/stepstick"
         },
+        "^standard_stepper$": {
+          "$ref": "#/$defs/standard_stepper"
+        },
         "^tmc_2130$": {
           "$ref": "#/$defs/tmc_2130"
         },
@@ -1357,6 +1360,27 @@
         },
         "reset_pin": {
           "title": "Reset pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        }
+      }
+    },
+    "standard_stepper": {
+      "title": "Standard stepper",
+      "type": "object",
+      "properties": {
+        "step_pin": {
+          "title": "Step pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction_pin": {
+          "title": "Direction pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable_pin": {
+          "title": "Disable pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         }
