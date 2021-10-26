@@ -38,11 +38,11 @@ function isValid(schema, data) {
 		$('#error_text').text(yamlerror);
 	}
 
+	console.log(schema);
+	console.log(data);
+
 	if (yamlerror == null) {
-			
-		console.log(schema);
-		console.log(data);
-			
+					
 		const valid = ajv.validate(schema, data);
 	
 		if (ajv.errors) {
