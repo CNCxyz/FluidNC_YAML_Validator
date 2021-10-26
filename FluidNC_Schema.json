@@ -41,7 +41,7 @@
         "idle_ms": {
           "title": "Idle_ms",
           "type": "integer",
-          "maximum": 255,
+          "maximum":255,
           "examples": [
             255
           ],
@@ -79,8 +79,8 @@
       "title": "Axes",
       "type": "object",
       "properties": {
-        "shared_stepper_disable": {
-          "title": "Shared_stepper_disable",
+        "shared_stepper_disable_pin": {
+          "title": "Shared stepper disable pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         }
@@ -100,18 +100,18 @@
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "miso": {
-          "title": "Miso",
+        "miso_pin": {
+          "title": "Miso pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "mosi": {
-          "title": "Mosi",
+        "mosi_pin": {
+          "title": "Mosi pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "sck": {
-          "title": "Sck",
+        "sck_pin": {
+          "title": "Sck pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         }
@@ -121,18 +121,18 @@
       "title": "I2SO",
       "type": "object",
       "properties": {
-        "bck": {
-          "title": "Bck",
+        "bck_pin": {
+          "title": "Bck pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "data": {
-          "title": "Data",
+        "data_pin": {
+          "title": "Data pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "ws": {
-          "title": "Ws",
+        "ws_pin": {
+          "title": "Ws pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         }
@@ -142,43 +142,43 @@
       "title": "Control",
       "type": "object",
       "properties": {
-        "safety_door": {
-          "title": "Safety_door",
+        "safety_door_pin": {
+          "title": "Safety_door pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "reset": {
-          "title": "Reset",
+        "reset_pin": {
+          "title": "Reset pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "feed_hold": {
-          "title": "Feed_hold",
+        "feed_hold_pin": {
+          "title": "Feed_hold pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "cycle_start": {
-          "title": "Cycle_start",
+        "cycle_start_pin": {
+          "title": "Cycle_start pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "macro0": {
-          "title": "Macro0",
+        "macro0_pin": {
+          "title": "Macro0 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "macro1": {
-          "title": "Macro1",
+        "macro1_pin": {
+          "title": "Macro1 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "macro2": {
-          "title": "Macro2",
+        "macro2_pin": {
+          "title": "Macro2 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "macro3": {
-          "title": "Macro3",
+        "macro3_pin": {
+          "title": "Macro3 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         }
@@ -188,13 +188,13 @@
       "title": "Coolant",
       "type": "object",
       "properties": {
-        "flood": {
-          "title": "Flood",
+        "flood_pin": {
+          "title": "Flood pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "mist": {
-          "title": "Mist",
+        "mist_pin": {
+          "title": "Mist pin",
           "type": "string",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
@@ -342,6 +342,7 @@
               "default": "10.0.0.1",
               "$ref": "#/$defs/ipv4"
             },
+
             "netmask": {
               "title": "Netmask",
               "default": "255.255.0.0",
@@ -363,13 +364,13 @@
       "title": "Macros",
       "type": "object",
       "properties": {
-        "n0": {
-          "title": "N0",
+        "startup_line0": {
+          "title": "Start up line 0",
           "type": "null",
           "default": null
         },
-        "n1": {
-          "title": "N1",
+        "startup_line1": {
+          "title": "Start up line 1",
           "type": "null",
           "default": null
         },
@@ -395,79 +396,112 @@
         }
       }
     },
+    "start": {
+      "title": "Start procedure",
+      "type": "object",
+      "properties": {
+        "must_home": {
+          "title": "Must home (boolean)",
+          "type": "boolean",
+          "examples": [
+            true,
+            false
+          ],
+          "default": true
+        },
+        "deactivate_parking": {
+          "title": "Deactivate parking mode (boolean)",
+          "type": "boolean",
+          "examples": [
+            true,
+            false
+          ],
+          "default": false
+        },
+        "check_limits": {
+          "title": "Check limits (boolean)",
+          "type": "boolean",
+          "examples": [
+            true,
+            false
+          ],
+          "default": false
+        }
+      }
+    },
     "user_outputs": {
       "title": "User_outputs",
       "type": "object",
       "properties": {
-        "analog0": {
-          "title": "Analog0",
+        "analog0_pin": {
+          "title": "Analog0 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "analog1": {
-          "title": "Analog1",
+        "analog1_pin": {
+          "title": "Analog1 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "analog2": {
-          "title": "Analog2",
+        "analog2_pin": {
+          "title": "Analog2 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "analog3": {
-          "title": "Analog3",
+        "analog3_pin": {
+          "title": "Analog3 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "analog_frequency0": {
-          "title": "Analog_frequency0",
+        "analog0_hz": {
+          "title": "Analog0 frequency (hz)",
           "type": "integer",
           "examples": [
             5000
           ],
           "default": 0
         },
-        "analog_frequency1": {
-          "title": "Analog_frequency1",
+        "analog1_hz": {
+          "title": "Analog1 frequency (hz)",
           "type": "integer",
           "examples": [
             5000
           ],
           "default": 0
         },
-        "analog_frequency2": {
-          "title": "Analog_frequency2",
+        "analog2_hz": {
+          "title": "Analog2 frequency (hz)",
           "type": "integer",
           "examples": [
             5000
           ],
           "default": 0
         },
-        "analog_frequency3": {
-          "title": "Analog_frequency3",
+        "analog3_hz": {
+          "title": "Analog3 frequency (hz)",
           "type": "integer",
           "examples": [
             5000
           ],
           "default": 0
         },
-        "digital0": {
-          "title": "Digital0",
+        "digital0_pin": {
+          "title": "Digital0 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "digital1": {
-          "title": "Digital1",
+        "digital1_pin": {
+          "title": "Digital1 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "digital2": {
-          "title": "Digital2",
+        "digital2_pin": {
+          "title": "Digital2 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "digital3": {
-          "title": "Digital3",
+        "digital3_pin": {
+          "title": "Digital3 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         }
@@ -477,8 +511,8 @@
       "title": "Sdcard",
       "type": "object",
       "properties": {
-        "card_detect": {
-          "title": "Card_detect",
+        "card_detect_pin": {
+          "title": "Card detect pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         }
@@ -500,16 +534,16 @@
       ],
       "default": false
     },
-    "arc_tolerance": {
-      "title": "Arc_tolerance",
+    "arc_tolerance_mm": {
+      "title": "Arc_tolerance (mm)",
       "type": "number",
       "examples": [
         0.002
       ],
       "default": 0
     },
-    "junction_deviation": {
-      "title": "Junction_deviation",
+    "junction_deviation_mm": {
+      "title": "Junction_deviation (mm)",
       "type": "number",
       "examples": [
         0.01
@@ -592,18 +626,18 @@
       "title": "10v",
       "type": "object",
       "properties": {
-        "forward": {
-          "title": "Forward",
+        "forward_pin": {
+          "title": "Forward pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "reverse": {
-          "title": "Reverse",
+        "reverse_pin": {
+          "title": "Reverse pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "pwm_freq": {
-          "title": "Pwm_freq",
+        "pwm_hz": {
+          "title": "PWM frequency (hz)",
           "type": "integer",
           "examples": [
             5000
@@ -625,7 +659,7 @@
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "disable_with_zero_speed": {
+        "disable_with_s0": {
           "title": "Disable_with_zero_speed",
           "type": "boolean",
           "examples": [
@@ -633,7 +667,7 @@
           ],
           "default": false
         },
-        "zero_speed_with_disable": {
+        "s0_with_disable": {
           "title": "Zero_speed_with_disable",
           "type": "boolean",
           "examples": [
@@ -657,7 +691,7 @@
           ],
           "default": 0
         },
-        "tool": {
+        "tool_num": {
           "title": "Tool",
           "type": "integer",
           "examples": [
@@ -665,9 +699,9 @@
           ],
           "default": 0
         },
-        "speeds": {
-          "title": "Speeds",
-          "$ref": "#/$defs/speeds"
+        "speed_map": {
+          "title": "speed_map",
+          "$ref": "#/$defs/speed_map"
         }
       }
     },
@@ -675,8 +709,8 @@
       "title": "Besc",
       "type": "object",
       "properties": {
-        "pwm_freq": {
-          "title": "Pwm_freq",
+        "pwm_hz": {
+          "title": "pwm frequency (hz)",
           "type": "integer",
           "examples": [
             50
@@ -730,7 +764,7 @@
           ],
           "default": 0
         },
-        "tool": {
+        "tool_num": {
           "title": "Tool",
           "type": "integer",
           "examples": [
@@ -738,9 +772,9 @@
           ],
           "default": 0
         },
-        "speeds": {
-          "title": "Speeds",
-          "$ref": "#/$defs/speeds"
+        "speed_map": {
+          "title": "speed_map",
+          "$ref": "#/$defs/speed_map"
         },
         "min_pulse_us": {
           "title": "Min_pulse_us",
@@ -811,7 +845,7 @@
           ],
           "default": 0
         },
-        "tool": {
+        "tool_num": {
           "title": "Tool",
           "type": "integer",
           "examples": [
@@ -819,9 +853,9 @@
           ],
           "default": 0
         },
-        "speeds": {
-          "title": "Speeds",
-          "$ref": "#/$defs/speeds"
+        "speed_map": {
+          "title": "speed_map",
+          "$ref": "#/$defs/speed_map"
         }
       }
     },
@@ -907,7 +941,7 @@
           ],
           "default": 0
         },
-        "tool": {
+        "tool_num": {
           "title": "Tool",
           "type": "integer",
           "examples": [
@@ -915,9 +949,9 @@
           ],
           "default": 0
         },
-        "speeds": {
-          "title": "Speeds",
-          "$ref": "#/$defs/speeds"
+        "speed_map": {
+          "title": "speed_map",
+          "$ref": "#/$defs/speed_map"
         }
       }
     },
@@ -925,8 +959,8 @@
       "title": "Laser",
       "type": "object",
       "properties": {
-        "pwm_freq": {
-          "title": "Pwm_freq",
+        "pwm_hz": {
+          "title": "pwm frequency (hz)",
           "type": "integer",
           "examples": [
             5000
@@ -980,7 +1014,7 @@
           ],
           "default": 0
         },
-        "tool": {
+        "tool_num": {
           "title": "Tool",
           "type": "integer",
           "examples": [
@@ -988,9 +1022,9 @@
           ],
           "default": 0
         },
-        "speeds": {
-          "title": "Speeds",
-          "$ref": "#/$defs/speeds"
+        "speed_map": {
+          "title": "speed_map",
+          "$ref": "#/$defs/speed_map"
         }
       }
     },
@@ -1045,7 +1079,7 @@
           ],
           "default": 0
         },
-        "tool": {
+        "tool_num": {
           "title": "Tool",
           "type": "integer",
           "examples": [
@@ -1053,9 +1087,9 @@
           ],
           "default": 0
         },
-        "speeds": {
-          "title": "Speeds",
-          "$ref": "#/$defs/speeds"
+        "speed_map": {
+          "title": "speed_map",
+          "$ref": "#/$defs/speed_map"
         }
       }
     },
@@ -1063,8 +1097,8 @@
       "title": "Pwm",
       "type": "object",
       "properties": {
-        "pwm_freq": {
-          "title": "Pwm_freq",
+        "pwm_hz": {
+          "title": "pwm frequency (hz)",
           "type": "integer",
           "examples": [
             5000
@@ -1118,7 +1152,7 @@
           ],
           "default": 0
         },
-        "tool": {
+        "tool_num": {
           "title": "Tool",
           "type": "integer",
           "examples": [
@@ -1126,9 +1160,9 @@
           ],
           "default": 0
         },
-        "speeds": {
-          "title": "Speeds",
-          "$ref": "#/$defs/speeds"
+        "speed_map": {
+          "title": "speed_map",
+          "$ref": "#/$defs/speed_map"
         }
       }
     },
@@ -1143,31 +1177,31 @@
       "type": "object",
       "properties": {
         "steps_per_mm": {
-          "title": "Steps_per_mm",
+          "title": "Steps per mm",
           "type": "number",
           "examples": [
             320
           ],
           "default": 0
         },
-        "max_rate": {
-          "title": "Max_rate",
+        "max_rate_mm_per_min": {
+          "title": "Max_rate (mm/min)",
           "type": "number",
           "examples": [
             1000
           ],
           "default": 0
         },
-        "acceleration": {
-          "title": "Acceleration",
+        "acceleration_mm_per_sec2": {
+          "title": "Acceleration (mm/sec^2)",
           "type": "number",
           "examples": [
             25
           ],
           "default": 0
         },
-        "max_travel": {
-          "title": "Max_travel",
+        "max_travel_mm": {
+          "title": "Max_travel (mm)",
           "type": "number",
           "examples": [
             200
@@ -1185,6 +1219,9 @@
         }
       },
       "patternProperties": {
+        "^homing$": {
+          "$ref": "#/$defs/homing"
+        },
         "^motor[0-9]+$": {
           "$ref": "#/$defs/motor"
         }
@@ -1193,18 +1230,18 @@
     "motor": {
       "type": "object",
       "properties": {
-        "limit_all": {
-          "title": "Limit_all",
+        "limit_all_pin": {
+          "title": "Limit all pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "limit_pos": {
-          "title": "Limit_pos",
+        "limit_pos_pin": {
+          "title": "Limit pos pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "limit_neg": {
-          "title": "Limit_neg",
+        "limit_neg_pin": {
+          "title": "Limit neg pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
@@ -1217,8 +1254,8 @@
           ],
           "default": false
         },
-        "pulloff": {
-          "title": "Pulloff",
+        "pulloff_mm": {
+          "title": "Pulloff (mm)",
           "type": "number",
           "examples": [
             1
@@ -1238,6 +1275,9 @@
         },
         "^rc_servo$": {
           "$ref": "#/$defs/rc_servo"
+        },
+        "^unipolar$": {
+          "$ref": "#/$defs/unipolar"
         }
       }
     },
@@ -1245,8 +1285,8 @@
       "title": "RC Servo",
       "type": "object",
       "properties": {
-        "pwm_freq": {
-          "title": "Pwm_freq",
+        "pwm_hz": {
+          "title": "pwm frequency (hz)",
           "type": "integer",
           "examples": [
             50
@@ -1285,38 +1325,38 @@
       "title": "Stepstick",
       "type": "object",
       "properties": {
-        "step": {
-          "title": "Step",
+        "step_pin": {
+          "title": "Step pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "direction": {
-          "title": "Direction",
+        "direction_pin": {
+          "title": "Direction pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "disable": {
-          "title": "Disable",
+        "disable_pin": {
+          "title": "Disable pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "ms1": {
-          "title": "MS1",
+        "ms1_pin": {
+          "title": "MS1 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "ms2": {
-          "title": "MS2",
+        "ms2_pin": {
+          "title": "MS2 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "ms3": {
-          "title": "MS3",
+        "ms3_pin": {
+          "title": "MS3 pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "reset": {
-          "title": "Reset",
+        "reset_pin": {
+          "title": "Reset pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         }
@@ -1326,12 +1366,44 @@
         "direction"
       ]
     },
+    "unipolar": {
+      "phase0_pin": {
+        "title": "Phase 0 pin",
+        "$ref": "#/$defs/pins",
+        "default": "NO_PIN"
+      },
+      "phase1_pin": {
+        "title": "Phase 1 pin",
+        "$ref": "#/$defs/pins",
+        "default": "NO_PIN"
+      },
+      "phase2_pin": {
+        "title": "Phase 2 pin",
+        "$ref": "#/$defs/pins",
+        "default": "NO_PIN"
+      },
+      "phase3_pin": {
+        "title": "Phase 3 pin",
+        "$ref": "#/$defs/pins",
+        "default": "NO_PIN"
+      },
+      "half_step": {
+        "title": "Half step (boolean)",
+        "type": "boolean",
+        "examples": [
+          true,
+          false
+        ],
+        "default": true
+      }
+    },
     "tmc_2130": {
       "title": "TMC_2130",
       "type": "object",
+
       "properties": {
-        "cs": {
-          "title": "Cs",
+        "cs_pin": {
+          "title": "Chip select pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
@@ -1343,24 +1415,24 @@
           ],
           "default": 0
         },
-        "r_sense": {
-          "title": "R_sense",
+        "r_sense_ohms": {
+          "title": "R sense (ohms)",
           "type": "number",
           "examples": [
             0.11
           ],
           "default": 0
         },
-        "run_current": {
-          "title": "Run_current",
+        "run_amps": {
+          "title": "Run current (amps)",
           "type": "number",
           "examples": [
             0.25
           ],
           "default": 0
         },
-        "hold_current": {
-          "title": "Hold_current",
+        "hold_amps": {
+          "title": "Hold current (amps)",
           "type": "number",
           "examples": [
             0.25
@@ -1383,8 +1455,8 @@
           ],
           "default": 0
         },
-        "stallguardDebugMode": {
-          "title": "Stallguarddebugmode",
+        "stallguard_debug": {
+          "title": "Stallguard debug mode enable",
           "type": "boolean",
           "examples": [
             false
@@ -1624,7 +1696,79 @@
         }
       }
     },
-    "speeds": {
+    "homing": {
+      "cycle": {
+        "title": "Cycle (int)",
+        "type": "integer",
+        "examples": [
+          -1,
+          0,
+          1,
+          2,
+          3
+        ],
+        "default":-1
+      },
+      "positive_direction": {
+        "title": "Positive direction (boolean)",
+        "type": "boolean",
+        "examples": [
+          true,
+          false
+        ],
+        "default": true
+      },
+      "mpos_mm": {
+        "title": "Switch location delta (mm)",
+        "type": "number",
+        "examples": [
+          0.0,
+          0.5
+        ],
+        "default": 0
+      },
+      "feed_mm_per_min": {
+        "title": "Feed rate (mm/min)",
+        "type": "number",
+        "examples": [
+          50
+        ],
+        "default": 50
+      },
+      "seek_mm_per_min": {
+        "title": "Seek rate (mm/min)",
+        "type": "number",
+        "examples": [
+          200.0
+        ],
+        "default": 200.0
+      },
+      "settle_ms": {
+        "title": "Settle time (ms)",
+        "type": "integer",
+        "examples": [
+          250
+        ],
+        "default": 250
+      },
+      "seek_scaler": {
+        "title": "Seek scaler",
+        "type": "number",
+        "examples": [
+          1.1
+        ],
+        "default": 1.1
+      },
+      "feed_scaler": {
+        "title": "Feed scaler",
+        "type": "number",
+        "examples": [
+          1.1
+        ],
+        "default": 1.1
+      }
+    },
+    "speed_map": {
       "type": "string",
       "default": "",
       "examples": [
