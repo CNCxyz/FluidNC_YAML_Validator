@@ -16,6 +16,12 @@
       "default": "",
       "pattern": "^.*$"
     },
+    "meta": {
+      "title": "Meta",
+      "type": "string",
+      "default": "",
+      "pattern": "^.*$"
+    },
     "stepping": {
       "title": "Stepping",
       "type": "object",
@@ -41,7 +47,7 @@
         "idle_ms": {
           "title": "Idle_ms",
           "type": "integer",
-          "maximum":255,
+          "maximum": 255,
           "examples": [
             255
           ],
@@ -88,6 +94,21 @@
       "patternProperties": {
         "^[x-za-c]{1}$": {
           "$ref": "#/$defs/axis"
+        }
+      }
+    },
+    "kinematics": {
+      "title": "Kinematics",
+      "type": "object",
+      "patternProperties": {
+        "^WallPlotter$": {
+          "$ref": "#/$defs/WallPlotter"
+        },
+        "^CoreXY$": {
+          "$ref": "#/$defs/CoreXY"
+        },
+        "^midtbot$": {
+          "$ref": "#/$defs/midtbot"
         }
       }
     },
@@ -342,7 +363,6 @@
               "default": "10.0.0.1",
               "$ref": "#/$defs/ipv4"
             },
-
             "netmask": {
               "title": "Netmask",
               "default": "255.255.0.0",
@@ -537,6 +557,8 @@
     "arc_tolerance_mm": {
       "title": "Arc_tolerance (mm)",
       "type": "number",
+      "minimum": 0,
+      "maximum": 1,
       "examples": [
         0.002
       ],
@@ -545,6 +567,8 @@
     "junction_deviation_mm": {
       "title": "Junction_deviation (mm)",
       "type": "number",
+      "minimum": 0,
+      "maximum": 1,
       "examples": [
         0.01
       ],
@@ -1281,6 +1305,75 @@
         },
         "^unipolar$": {
           "$ref": "#/$defs/unipolar"
+        },
+        "^solenoid$": {
+          "$ref": "#/$defs/solenoid"
+        }
+      }
+    },
+    "solenoid": {
+      "title": "Solenoid",
+      "type": "object",
+      "properties": {
+        "output_pin": {
+          "title": "Output_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "pwm_hz": {
+          "title": "pwm frequency (hz)",
+          "type": "integer",
+          "examples": [
+            5000
+          ],
+          "default": 0
+        },
+        "off_percent": {
+          "title": "Off Percentage",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "pull_percent": {
+          "title": "Pull Percentage",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "examples": [
+            100
+          ],
+          "default": 0
+        },
+        "hold_percent": {
+          "title": "Hold Percentage",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "examples": [
+            20
+          ],
+          "default": 0
+        },
+        "pull_ms": {
+          "title": "Pull time (ms)",
+          "type": "integer",
+          "examples": [
+            1000
+          ],
+          "default": 0
+        },
+        "direction_invert": {
+          "title": "Invert Direction (boolean)",
+          "type": "boolean",
+          "examples": [
+            true,
+            false
+          ],
+          "default": false
         }
       }
     },
@@ -1423,7 +1516,7 @@
           ],
           "default": true
         }
-	  }
+      }
     },
     "tmc_2130": {
       "title": "TMC_2130",
@@ -1608,6 +1701,16 @@
             }
           }
         },
+        "addr": {
+          "title": "Address",
+          "type": "integer",
+          "examples": [
+            0,
+            1,
+            2
+          ],
+          "default": 0
+        },
         "r_sense": {
           "title": "R_sense",
           "type": "number",
@@ -1737,7 +1840,16 @@
             2,
             3
           ],
-          "default":-1
+          "default": -1
+        },
+        "allow_single_axis": {
+          "title": "Allow single axis (boolean)",
+          "type": "boolean",
+          "examples": [
+            true,
+            false
+          ],
+          "default": true
         },
         "positive_direction": {
           "title": "Positive direction (boolean)",
@@ -1752,7 +1864,7 @@
           "title": "Switch location delta (mm)",
           "type": "number",
           "examples": [
-            0.0,
+            0,
             0.5
           ],
           "default": 0
@@ -1769,9 +1881,9 @@
           "title": "Seek rate (mm/min)",
           "type": "number",
           "examples": [
-            200.0
+            200
           ],
-          "default": 200.0
+          "default": 200
         },
         "settle_ms": {
           "title": "Settle time (ms)",
@@ -1817,6 +1929,70 @@
         "255.255.0.0"
       ],
       "pattern": "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(.(?!$)|$)){4}$"
+    },
+    "WallPlotter": {
+      "title": "WallPlotter",
+      "type": "object",
+      "properties": {
+        "left_axis": {
+          "type": "integer",
+          "examples": [
+            0
+          ]
+        },
+        "left_anchor_x": {
+          "type": "number",
+          "examples": [
+            -267
+          ]
+        },
+        "left_anchor_y": {
+          "type": "number",
+          "examples": [
+            250
+          ]
+        },
+        "right_axis": {
+          "type": "integer",
+          "default": [
+            1
+          ]
+        },
+        "right_anchor_x": {
+          "type": "number",
+          "examples": [
+            267
+          ]
+        },
+        "right_anchor_y": {
+          "type": "number",
+          "examples": [
+            250
+          ]
+        },
+        "segment_length": {
+          "type": "number",
+          "examples": [
+            10
+          ]
+        }
+      }
+    },
+    "CoreXY": {
+      "title": "CoreXY",
+      "type": "object",
+      "properties": {
+        "x_scaler": {
+          "type": "integer",
+          "examples": [
+            1
+          ]
+        }
+      }
+    },
+    "midtbot": {
+      "title": "midtbot",
+      "type": "object"
     }
   }
 }
