@@ -226,7 +226,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 10000
         }
       }
     },
@@ -479,7 +481,9 @@
           "examples": [
             5000
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 1,
+          "maximum": 20000000
         },
         "analog1_hz": {
           "title": "Analog1 frequency (hz)",
@@ -487,7 +491,9 @@
           "examples": [
             5000
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 1,
+          "maximum": 20000000
         },
         "analog2_hz": {
           "title": "Analog2 frequency (hz)",
@@ -495,7 +501,9 @@
           "examples": [
             5000
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 1,
+          "maximum": 20000000
         },
         "analog3_hz": {
           "title": "Analog3 frequency (hz)",
@@ -503,7 +511,9 @@
           "examples": [
             5000
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 1,
+          "maximum": 20000000
         },
         "digital0_pin": {
           "title": "Digital0 pin",
@@ -646,6 +656,13 @@
       ],
       "default": false
     },
+    "planner_blocks": {
+      "title": "Planner blocks",
+      "type": "integer",
+      "default": 16,
+      "minimum": 10,
+      "maximum": 120
+    },
     "10V": {
       "title": "10v",
       "type": "object",
@@ -705,7 +722,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "spindown_ms": {
           "title": "Spindown_ms",
@@ -713,7 +732,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "tool_num": {
           "title": "Tool",
@@ -756,7 +777,7 @@
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "disable_with_zero_speed": {
+        "disable_with_s0": {
           "title": "Disable_with_zero_speed",
           "type": "boolean",
           "examples": [
@@ -764,7 +785,7 @@
           ],
           "default": false
         },
-        "zero_speed_with_disable": {
+        "s0_with_disable": {
           "title": "Zero_speed_with_disable",
           "type": "boolean",
           "examples": [
@@ -778,7 +799,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "spindown_ms": {
           "title": "Spindown_ms",
@@ -786,7 +809,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "tool_num": {
           "title": "Tool",
@@ -806,7 +831,9 @@
           "examples": [
             900
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 500,
+          "maximum": 3000
         },
         "max_pulse_us": {
           "title": "Max_pulse_us",
@@ -814,7 +841,9 @@
           "examples": [
             2200
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 500,
+          "maximum": 3000
         }
       }
     },
@@ -837,7 +866,7 @@
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "disable_with_zero_speed": {
+        "disable_with_s0": {
           "title": "Disable_with_zero_speed",
           "type": "boolean",
           "examples": [
@@ -845,7 +874,7 @@
           ],
           "default": false
         },
-        "zero_speed_with_disable": {
+        "s0_with_disable": {
           "title": "Zero_speed_with_disable",
           "type": "boolean",
           "examples": [
@@ -859,7 +888,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "spindown_ms": {
           "title": "Spindown_ms",
@@ -867,7 +898,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "tool_num": {
           "title": "Tool",
@@ -925,29 +958,15 @@
             }
           }
         },
-        "spinup_delay_ms": {
-          "title": "Spinup_delay_ms",
-          "type": "integer",
-          "examples": [
-            10
-          ],
-          "default": 0
-        },
-        "spindown_delay_ms": {
-          "title": "Spindown_delay_ms",
-          "type": "integer",
-          "examples": [
-            10
-          ],
-          "default": 0
-        },
         "modbus_id": {
           "title": "Modbus_id",
           "type": "integer",
           "examples": [
             1
           ],
-          "default": 0
+          "default": 1,
+          "minimum": 0,
+          "maximum": 247
         },
         "spinup_ms": {
           "title": "Spinup_ms",
@@ -955,7 +974,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "spindown_ms": {
           "title": "Spindown_ms",
@@ -963,7 +984,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "tool_num": {
           "title": "Tool",
@@ -1006,7 +1029,7 @@
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "disable_with_zero_speed": {
+        "disable_with_s0": {
           "title": "Disable_with_zero_speed",
           "type": "boolean",
           "examples": [
@@ -1014,7 +1037,7 @@
           ],
           "default": false
         },
-        "zero_speed_with_disable": {
+        "s0_with_disable": {
           "title": "Zero_speed_with_disable",
           "type": "boolean",
           "examples": [
@@ -1028,7 +1051,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "spindown_ms": {
           "title": "Spindown_ms",
@@ -1036,7 +1061,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "tool_num": {
           "title": "Tool",
@@ -1071,7 +1098,7 @@
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "disable_with_zero_speed": {
+        "disable_with_s0": {
           "title": "Disable_with_zero_speed",
           "type": "boolean",
           "examples": [
@@ -1079,7 +1106,7 @@
           ],
           "default": false
         },
-        "zero_speed_with_disable": {
+        "s0_with_disable": {
           "title": "Zero_speed_with_disable",
           "type": "boolean",
           "examples": [
@@ -1093,7 +1120,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "spindown_ms": {
           "title": "Spindown_ms",
@@ -1101,7 +1130,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "tool_num": {
           "title": "Tool",
@@ -1144,7 +1175,7 @@
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
         },
-        "disable_with_zero_speed": {
+        "disable_with_s0": {
           "title": "Disable_with_zero_speed",
           "type": "boolean",
           "examples": [
@@ -1152,7 +1183,7 @@
           ],
           "default": false
         },
-        "zero_speed_with_disable": {
+        "s0_with_disable": {
           "title": "Zero_speed_with_disable",
           "type": "boolean",
           "examples": [
@@ -1166,7 +1197,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "spindown_ms": {
           "title": "Spindown_ms",
@@ -1174,7 +1207,78 @@
           "examples": [
             0
           ],
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
+        },
+        "tool_num": {
+          "title": "Tool",
+          "type": "integer",
+          "examples": [
+            0
+          ],
           "default": 0
+        },
+        "speed_map": {
+          "title": "speed_map",
+          "$ref": "#/$defs/speed_map"
+        }
+      }
+    },
+    "HBridgeSpindle": {
+      "title": "HBridge Spindle",
+      "type": "object",
+      "properties": {
+        "pwm_hz": {
+          "title": "pwm frequency (hz)",
+          "type": "integer",
+          "examples": [
+            5000
+          ],
+          "default": 0
+        },
+        "output_cw_pin": {
+          "title": "Output_pin (Clockwise)",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "output_ccw_pin": {
+          "title": "Output_pin (Counter Clockwise)",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "enable_pin": {
+          "title": "Enable_pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable_with_s0": {
+          "title": "Disable_with_zero_speed",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "spinup_ms": {
+          "title": "Spinup_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
+        },
+        "spindown_ms": {
+          "title": "Spindown_ms",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0,
+          "minimum": 0,
+          "maximum": 20
         },
         "tool_num": {
           "title": "Tool",
@@ -1206,7 +1310,9 @@
           "examples": [
             320
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0.001,
+          "maximum": 100000
         },
         "max_rate_mm_per_min": {
           "title": "Max_rate (mm/min)",
@@ -1214,7 +1320,9 @@
           "examples": [
             1000
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0.001,
+          "maximum": 100000
         },
         "acceleration_mm_per_sec2": {
           "title": "Acceleration (mm/sec^2)",
@@ -1222,7 +1330,9 @@
           "examples": [
             25
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0.001,
+          "maximum": 100000
         },
         "max_travel_mm": {
           "title": "Max_travel (mm)",
@@ -1230,7 +1340,9 @@
           "examples": [
             200
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0.1,
+          "maximum": 10000000
         },
         "soft_limits": {
           "title": "Soft_limits",
@@ -1284,7 +1396,9 @@
           "examples": [
             1
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0.1,
+          "maximum": 100000
         }
       },
       "patternProperties": {
@@ -1326,7 +1440,9 @@
           "examples": [
             5000
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 1000,
+          "maximum": 100000
         },
         "off_percent": {
           "title": "Off Percentage",
@@ -1364,7 +1480,9 @@
           "examples": [
             1000
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 3000
         },
         "direction_invert": {
           "title": "Invert Direction (boolean)",
@@ -1387,7 +1505,9 @@
           "examples": [
             50
           ],
-          "default": 0
+          "default": 50,
+          "minimum": 50,
+          "maximum": 200
         },
         "output_pin": {
           "title": "Output_pin",
@@ -1400,7 +1520,9 @@
           "examples": [
             1000
           ],
-          "default": 0
+          "default": 1000,
+          "minimum": 500,
+          "maximum": 2500
         },
         "max_pulse_us": {
           "title": "Max_pulse_us",
@@ -1408,7 +1530,9 @@
           "examples": [
             2000
           ],
-          "default": 0
+          "default": 2000,
+          "minimum": 500,
+          "maximum": 2500
         }
       }
     },
@@ -1533,7 +1657,9 @@
           "examples": [
             -1
           ],
-          "default": 0
+          "default": 0,
+          "minimum": -1,
+          "maximum": 127
         },
         "r_sense_ohms": {
           "title": "R sense (ohms)",
@@ -1541,7 +1667,9 @@
           "examples": [
             0.11
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 1
         },
         "run_amps": {
           "title": "Run current (amps)",
@@ -1549,7 +1677,9 @@
           "examples": [
             0.25
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0.05,
+          "maximum": 10
         },
         "hold_amps": {
           "title": "Hold current (amps)",
@@ -1557,7 +1687,9 @@
           "examples": [
             0.25
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0.05,
+          "maximum": 10
         },
         "microsteps": {
           "title": "Microsteps",
@@ -1565,7 +1697,9 @@
           "examples": [
             32
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 1,
+          "maximum": 256
         },
         "stallguard": {
           "title": "Stallguard",
@@ -1573,7 +1707,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": -64,
+          "maximum": 63
         },
         "stallguard_debug": {
           "title": "Stallguard debug mode enable",
@@ -1589,7 +1725,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 15
         },
         "toff_stealthchop": {
           "title": "Toff_stealthchop",
@@ -1597,7 +1735,9 @@
           "examples": [
             5
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 2,
+          "maximum": 15
         },
         "toff_coolstep": {
           "title": "Toff_coolstep",
@@ -1605,7 +1745,9 @@
           "examples": [
             3
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 2,
+          "maximum": 15
         },
         "run_mode": {
           "title": "Run_mode",
@@ -1749,7 +1891,9 @@
           "examples": [
             0
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 255
         },
         "stallguardDebugMode": {
           "title": "Stallguarddebugmode",
@@ -1781,14 +1925,18 @@
           "examples": [
             3
           ],
-          "default": 0
+          "default": 0,
+          "minimum": 2,
+          "maximum": 15
         },
         "run_mode": {
           "title": "Run_mode",
           "type": "string",
           "default": "",
           "examples": [
-            "StealthChop"
+            "StealthChop",
+            "CoolStep",
+            "StallGuard"
           ],
           "pattern": "^.*$"
         },
@@ -1797,7 +1945,9 @@
           "type": "string",
           "default": "",
           "examples": [
-            "StealthChop"
+            "StealthChop",
+            "CoolStep",
+            "StallGuard"
           ],
           "pattern": "^.*$"
         },
@@ -1840,7 +1990,9 @@
             2,
             3
           ],
-          "default": -1
+          "default": -1,
+          "minimum": -1,
+          "maximum": 6
         },
         "allow_single_axis": {
           "title": "Allow single axis (boolean)",
@@ -1875,7 +2027,9 @@
           "examples": [
             50
           ],
-          "default": 50
+          "default": 50,
+          "minimum": 1,
+          "maximum": 100000
         },
         "seek_mm_per_min": {
           "title": "Seek rate (mm/min)",
@@ -1883,7 +2037,9 @@
           "examples": [
             200
           ],
-          "default": 200
+          "default": 200,
+          "minimum": 1,
+          "maximum": 100000
         },
         "settle_ms": {
           "title": "Settle time (ms)",
@@ -1891,7 +2047,9 @@
           "examples": [
             250
           ],
-          "default": 250
+          "default": 250,
+          "minimum": 0,
+          "maximum": 1000
         },
         "seek_scaler": {
           "title": "Seek scaler",
@@ -1899,7 +2057,9 @@
           "examples": [
             1.1
           ],
-          "default": 1.1
+          "default": 1.1,
+          "minimum": 1,
+          "maximum": 100
         },
         "feed_scaler": {
           "title": "Feed scaler",
@@ -1907,7 +2067,9 @@
           "examples": [
             1.1
           ],
-          "default": 1.1
+          "default": 1.1,
+          "minimum": 1,
+          "maximum": 100
         }
       }
     },
