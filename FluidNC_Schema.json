@@ -1414,6 +1414,9 @@
         "^tmc_2209$": {
           "$ref": "#/$defs/tmc_2209"
         },
+        "^tmc_5160$": {
+          "$ref": "#/$defs/tmc_5160"
+        },
         "^rc_servo$": {
           "$ref": "#/$defs/rc_servo"
         },
@@ -1973,6 +1976,160 @@
           "title": "Disable pin",
           "$ref": "#/$defs/pins",
           "default": "NO_PIN"
+        }
+      }
+    },
+    "tmc_5160": {
+      "title": "TMC_5160",
+      "type": "object",
+      "properties": {
+        "cs_pin": {
+          "title": "Chip select pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "r_sense_ohms": {
+          "title": "R sense (ohms)",
+          "type": "number",
+          "examples": [
+            0.11
+          ],
+          "default": 0,
+          "minimum": 0,
+          "maximum": 1
+        },
+        "run_amps": {
+          "title": "Run current (amps)",
+          "type": "number",
+          "examples": [
+            0.25
+          ],
+          "default": 0,
+          "minimum": 0.05,
+          "maximum": 10
+        },
+        "hold_amps": {
+          "title": "Hold current (amps)",
+          "type": "number",
+          "examples": [
+            0.25
+          ],
+          "default": 0,
+          "minimum": 0.05,
+          "maximum": 10
+        },
+        "microsteps": {
+          "title": "Microsteps",
+          "type": "integer",
+          "examples": [
+            32
+          ],
+          "default": 0,
+          "minimum": 1,
+          "maximum": 256
+        },
+        "stallguard": {
+          "title": "Stallguard",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0,
+          "minimum": -64,
+          "maximum": 63
+        },
+        "stallguard_debug": {
+          "title": "Stallguard debug mode enable",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "toff_disable": {
+          "title": "Toff_disable",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0,
+          "minimum": 0,
+          "maximum": 15
+        },
+        "toff_stealthchop": {
+          "title": "Toff_stealthchop",
+          "type": "integer",
+          "examples": [
+            5
+          ],
+          "default": 0,
+          "minimum": 2,
+          "maximum": 15
+        },
+        "toff_coolstep": {
+          "title": "Toff_coolstep",
+          "type": "integer",
+          "examples": [
+            3
+          ],
+          "default": 0,
+          "minimum": 2,
+          "maximum": 15
+        },
+        "run_mode": {
+          "title": "Run_mode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "StealthChop",
+            "CoolStep",
+            "StallGuard"
+          ],
+          "pattern": "^.*$"
+        },
+        "homing_mode": {
+          "title": "Homing_mode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "StealthChop",
+            "CoolStep",
+            "StallGuard"
+          ],
+          "pattern": "^.*$"
+        },
+        "use_enable": {
+          "title": "Use_enable",
+          "type": "boolean",
+          "examples": [
+            false
+          ],
+          "default": false
+        },
+        "step_pin": {
+          "title": "Step pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "direction_pin": {
+          "title": "Direction pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "disable_pin": {
+          "title": "Disable pin",
+          "$ref": "#/$defs/pins",
+          "default": "NO_PIN"
+        },
+        "tpfd": {
+          "title": "TPFD",
+          "type": "integer",
+          "examples": [
+            4
+          ],
+          "default": 4,
+          "minimum": 0,
+          "maximum": 15
         }
       }
     },
