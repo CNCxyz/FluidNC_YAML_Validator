@@ -20,6 +20,9 @@
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
+  
+	<link rel="stylesheet" type="text/css" href="vendor/codemirror/codemirror.css"></link>
+    
 </head>
 
 <body>
@@ -62,7 +65,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/8.1.0/ajv7.min.js" integrity="sha512-iG/rBFw+Q1mlDQt15pw86zil1/1JeeNoJ1Grux8zZgvIBLDDnRLdA8UaIosHohzrqBEXA2+hIQV7DXnYGYGX/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Main JS-->
     <script src="js/script.js"></script>
-
+    <script language="javascript" type="text/javascript" src="vendor/codemirror/codemirror.js"></script>
+	<script language="javascript" type="text/javascript" src="vendor/codemirror/yaml.js"></script>
+    
+<script language="javascript" type="text/javascript">    
+    var editor = CodeMirror.fromTextArea(document.getElementById('yaml'), {
+    lineNumbers: true,
+    mode: 'text/x-yaml'
+});
+</script>
+    
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
